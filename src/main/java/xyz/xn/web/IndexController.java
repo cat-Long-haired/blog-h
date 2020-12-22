@@ -8,14 +8,20 @@ import xyz.xn.NotFoundException;
 @Controller
 public class IndexController {
 
-    @GetMapping("/{id}/{name}")
-    public String index(@PathVariable Integer id, @PathVariable  String name) {
+     @GetMapping("/")
+     public String index () {
 //        int i = 1/0;
-        String blog = null;
+//        String blog = null;
 //        if (blog == null) {
 //           throw new NotFoundException("博客找不到");
 //        }
-        System.out.println("----index----");
+//        System.out.println("----index----");
         return "index";
     }
+
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
+
 }

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
+    <title>博客</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../static/css/me.css">
 </head>
 <body>
     <!--导航-->
-    <nav class="ui inverted attached segment m-padded-tb-mini">
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui yellow header item">Blog</h2>
@@ -61,7 +61,7 @@
                                         <div class="eleven wide column">
                                             <div class="ui horizontal link list">
                                                 <div class="item">
-                                                    <img src="https://picsum.photos/100/100?image=1027" alt="" class="ui avatar image">
+                                                    <img src="https://picsum.photos/100/100?image=1027"  alt="" class="ui avatar image">
                                                     <div class="content"><a href="#" class="header">jack</a></div>
                                                 </div>
                                                 <div class="item">
@@ -391,7 +391,7 @@
                     <!--二维码-->
                     <h4 class="ui horizontal divider header m-margin-top-large" style="color: pink">一张图片</h4>
                     <div class="ui centered card" style="width: 11em">
-                        <img src="../static/images/tx.jpg" alt="" class="ui rounded image">
+                        <img src="../static/images/tx.jpg" th:src="@{/images/tx.jpg}" alt="" class="ui rounded image">
                     </div>
                 </div>
             </div>
@@ -399,14 +399,14 @@
     </div>
 
     <!--底部-->
-    <footer class="ui inverted vertical segment m-padded-tb-massive">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned container">
             <div class="ui inverted stackable divided grid">
 
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="../static/images/tx.jpg" class="ui rounded image" alt="" style="width: 100px">
+                            <img src="../static/images/tx.jpg" th:src="@{/images/tx.jpg}" class="ui rounded image" alt="" style="width: 100px">
                         </div>
                     </div>
                 </div>
@@ -435,8 +435,12 @@
             <p class="m-text-thin m-text-spaced m-opacity-tiny">很长很长的占位符</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!--/*/</th:block>/*/-->
+
     <script>
         $('.menu.toggle').click(function() {
             $('.m-item').toggleClass('m-mobile-hide');
